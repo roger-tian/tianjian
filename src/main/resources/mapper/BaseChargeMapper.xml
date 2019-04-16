@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.leisu.tianjian.dao.BaseChargeDao" >
+    <resultMap id="BaseResultMap" type="com.leisu.tianjian.model.BaseChargeModel" >
+        <id column="id" property="id" jdbcType="BIGINT" />
+        <result column="area_id" property="areaId" jdbcType="BIGINT" />
+        <result column="charge" property="charge" jdbcType="VARCHAR" />
+    </resultMap>
+
+    <sql id="Base_Column_List" >
+        id, areaId, charge
+    </sql>
+
+    <select id="getBaseChargeByArea" resultType="String" parameterType="map">
+        select charge from base_charge left join area on base_charge.area_id = area.id where area.area = #{areaId}
+    </select>
+</mapper>

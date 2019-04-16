@@ -1,0 +1,26 @@
+server:
+  port: 8080
+
+spring:
+  datasource:
+    name: tianjian
+    url: jdbc:mysql://localhost:3306/tianjian?useUnicode=true&characterEncoding=utf8&useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true
+    username: root
+    password: root
+    driver-class-name: com.mysql.jdbc.Driver
+  redis:
+    database: 0
+    host: localhost
+    port: 6379
+    password: roger
+    timeout: 3000
+    pool:
+      max-active: 100
+      max-idle: 10
+      max-wait: 100000
+  thymeleaf:
+    cache: false
+
+mybatis:
+  mapper-locations: classpath:mapper/*.xml
+  type-aliases-package: com.leisu.tianjian.model
