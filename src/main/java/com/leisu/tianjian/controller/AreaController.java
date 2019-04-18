@@ -22,6 +22,7 @@ public class AreaController {
     @RequestMapping("/getCity")
     public List<String> getCity(@RequestBody Map req) {
         String superior = (String) req.get("superior");
+        logger.debug("getCity req: {}", req);
 
         return areaService.getCity(superior);
     }

@@ -1,7 +1,6 @@
 package com.leisu.tianjian.service.Impl;
 
 import com.leisu.tianjian.dao.AreaDao;
-import com.leisu.tianjian.model.AreaModel;
 import com.leisu.tianjian.service.AreaService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

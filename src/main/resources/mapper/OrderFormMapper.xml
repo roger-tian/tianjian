@@ -3,20 +3,21 @@
 <mapper namespace="com.leisu.tianjian.dao.OrderFormDao" >
     <resultMap id="BaseResultMap" type="com.leisu.tianjian.model.OrderFormModel" >
         <id column="id" property="id" jdbcType="BIGINT" />
-        <result column="from" property="from" jdbcType="VARCHAR" />
-        <result column="to" property="to" jdbcType="VARCHAR" />
+        <result column="order_from" property="orderFrom" jdbcType="VARCHAR" />
+        <result column="order_to" property="orderTo" jdbcType="VARCHAR" />
         <result column="weight" property="weight" jdbcType="VARCHAR" />
         <result column="volume" property="volume" jdbcType="VARCHAR" />
         <result column="flag" property="flag" jdbcType="VARCHAR" />
         <result column="amount" property="amount" jdbcType="VARCHAR" />
+        <result column="ctime" property="ctime" jdbcType="VARCHAR" />
     </resultMap>
 
     <sql id="Base_Column_List" >
-        id, from, to, weight, volume, flag, amount
+        id, from, to, weight, volume, flag, amount, ctime
     </sql>
 
-    <select id="insert" resultType="String" parameterType="com.leisu.tianjian.model.OrderFormModel">
-        insert into order_form(from, to, weight, volume, flag, amount)
-                values(#{from}, #{to}, #{weight}, #{volume}, #{flag}, #{amount})
+    <select id="insert" resultType="Integer" parameterType="com.leisu.tianjian.model.OrderFormModel">
+        insert into order_form(user_from, user_from_phone, user_to, user_to_phone, order_from, order_to, weight, volume, flag, amount, ctime)
+                values(#{userFrom}, #{userFromPhone}, #{userTo}, #{userToPhone}, #{orderFrom}, #{orderTo}, #{weight}, #{volume}, #{flag}, #{amount}, #{ctime})
     </select>
 </mapper>

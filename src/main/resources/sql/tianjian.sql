@@ -65,17 +65,33 @@ CREATE TABLE `base_charge` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8;
 
+DROP TABLE IF EXISTS `charge_type`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `charge_type` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `type` varchar(20) DEFAULT NULL,
+  `charge` varchar(20) DEFAULT NULL,
+  `remark` varchar(20) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8;
+
 DROP TABLE IF EXISTS `order_form`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `order_form` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
-  `from` varchar(20) DEFAULT NULL,
-  `to` varchar(20) DEFAULT NULL,
+  `user_from` varchar(20) DEFAULT NULL,
+  `user_from_phone` varchar(20) DEFAULT NULL,
+  `user_to` varchar(20) DEFAULT NULL,
+  `user_to_phone` varchar(20) DEFAULT NULL,
+  `order_from` varchar(20) DEFAULT NULL,
+  `order_to` varchar(20) DEFAULT NULL,
   `weight` varchar(20) DEFAULT NULL,
   `volume` varchar(20) DEFAULT NULL,
   `flag` varchar(20) DEFAULT '0',
   `amount` varchar(20) DEFAULT NULL,
+  `ctime` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8;
 

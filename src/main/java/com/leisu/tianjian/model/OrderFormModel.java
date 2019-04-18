@@ -9,20 +9,52 @@ public class OrderFormModel {
         this.id = id;
     }
 
-    public String getFrom() {
-        return from;
+    public String getUserFrom() {
+        return userFrom;
     }
 
-    public void setFrom(String from) {
-        this.from = from;
+    public void setUserFrom(String userFrom) {
+        this.userFrom = userFrom;
     }
 
-    public String getTo() {
-        return to;
+    public String getUserFromPhone() {
+        return userFromPhone;
     }
 
-    public void setTo(String to) {
-        this.to = to;
+    public void setUserFromPhone(String userFromPhone) {
+        this.userFromPhone = userFromPhone;
+    }
+
+    public String getUserTo() {
+        return userTo;
+    }
+
+    public void setUserTo(String userTo) {
+        this.userTo = userTo;
+    }
+
+    public String getUserToPhone() {
+        return userToPhone;
+    }
+
+    public void setUserToPhone(String userToPhone) {
+        this.userToPhone = userToPhone;
+    }
+
+    public String getOrderFrom() {
+        return orderFrom;
+    }
+
+    public void setOrderFrom(String orderFrom) {
+        this.orderFrom = orderFrom;
+    }
+
+    public String getOrderTo() {
+        return orderTo;
+    }
+
+    public void setOrderTo(String orderTo) {
+        this.orderTo = orderTo;
     }
 
     public String getWeight() {
@@ -57,11 +89,24 @@ public class OrderFormModel {
         this.amount = amount;
     }
 
-    Long id;
-    String from;
-    String to;
-    String weight;
-    String volume;
-    String flag;
-    String amount;
+    public String getCtime() {
+        return ctime;
+    }
+
+    public void setCtime(String ctime) {
+        this.ctime = ctime;
+    }
+
+    private Long id;
+    private String userFrom;
+    private String userFromPhone;
+    private String userTo;
+    private String userToPhone;
+    private String orderFrom;
+    private String orderTo;
+    private String weight;
+    private String volume;
+    private String flag;
+    private String amount;
+    private String ctime;
 }

@@ -9,8 +9,8 @@ import org.springframework.stereotype.Service;
 @Service
 public class OrderFormServiceImpl implements OrderFormService {
     @Override
-    public int insert(OrderFormModel orderFormModel) {
-        return orderFormDao.insert(orderFormModel);
+    public void insert(OrderFormModel orderFormModel) {
+        orderFormDao.insert(orderFormModel);
     }
 
     @Autowired

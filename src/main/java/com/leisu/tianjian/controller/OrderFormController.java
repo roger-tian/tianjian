@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Map;
 
 @RestController
@@ -16,20 +18,33 @@ import java.util.Map;
 public class OrderFormController {
     @RequestMapping("/generate")
     public String generateOrder(@RequestBody Map req) {
-        String from = (String) req.get("from");
-        String to = (String) req.get("to");
+        String userFrom = (String) req.get("userFrom");
+        String userFromPhone = (String) req.get("userFromPhone");
+        String userTo = (String) req.get("userTo");
+        String userToPhone = (String) req.get("userToPhone");
+        String orderFrom = (String) req.get("orderFrom");
+        String orderTo = (String) req.get("orderTo");
         String chargeType = (String) req.get("chargeType");
         String weight = (String) req.get("weight");
         String volume = (String) req.get("volume");
-        String charge = (String) req.get("charge");
+        String amount = (String) req.get("amount");
 
         OrderFormModel orderFormModel = new OrderFormModel();
-        orderFormModel.setFrom(from);
-        orderFormModel.setTo(to);
+        orderFormModel.setUserFrom(userFrom);
+        orderFormModel.setUserFromPhone(userFromPhone);
+        orderFormModel.setUserTo(userTo);
+        orderFormModel.setUserToPhone(userToPhone);
+        orderFormModel.setOrderFrom(orderFrom);
+        orderFormModel.setOrderTo(orderTo);
         orderFormModel.setFlag(chargeType);
         orderFormModel.setWeight(weight);
         orderFormModel.setVolume(volume);
-        orderFormModel.setAmount(charge);
+        orderFormModel.setAmount(amount);
+
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        String time = sdf.format(new Date());
+        logger.debug("time: {}", time);
+        orderFormModel.setCtime(time);
 
         orderFormService.insert(orderFormModel);
 
