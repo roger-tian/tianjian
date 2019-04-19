@@ -18,7 +18,7 @@ public class BaseChargeController {
         String province = (String) req.get("province");
         String city = (String) req.get("city");
         String area;
-        if (city.equals("")) {
+        if (city.equals("空")) {
             area = city;
         } else {
             area = province;
