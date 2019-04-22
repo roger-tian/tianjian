@@ -11,6 +11,10 @@
         id, areaId, charge
     </sql>
 
+    <select id="getAll" resultType="java.util.HashMap">
+        select a.area, c.charge from area a left join base_charge c on a.id = c.area_id;
+    </select>
+
     <select id="getBaseChargeByArea" resultType="String" parameterType="map">
         select charge from base_charge left join area on base_charge.area_id = area.id where area.area = #{areaId}
     </select>

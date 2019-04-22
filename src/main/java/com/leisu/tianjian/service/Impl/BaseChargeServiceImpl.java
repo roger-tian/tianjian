@@ -1,32 +1,36 @@
 package com.leisu.tianjian.service.Impl;
 
+import com.alibaba.fastjson.JSONObject;
 import com.leisu.tianjian.dao.BaseChargeDao;
 import com.leisu.tianjian.model.BaseChargeModel;
 import com.leisu.tianjian.service.BaseChargeService;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
-import org.apache.poi.ss.format.CellFormatType;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
-import org.apache.poi.xssf.usermodel.XSSFCell;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.InputStream;
 import java.util.HashMap;
+import java.util.List;
 
 @Service
 public class BaseChargeServiceImpl implements BaseChargeService {
     @Override
     public String getBaseChargeByArea(String area) {
         return baseChargeDao.getBaseChargeByArea(area);
+    }
+
+    @Override
+    public List<HashMap> getAll() {
+        return baseChargeDao.getAll();
     }
 
     @Override

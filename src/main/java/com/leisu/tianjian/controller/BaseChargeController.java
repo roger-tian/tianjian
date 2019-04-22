@@ -1,5 +1,7 @@
 package com.leisu.tianjian.controller;
 
+import com.alibaba.fastjson.JSONArray;
+import com.alibaba.fastjson.JSONObject;
 import com.leisu.tianjian.service.BaseChargeService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -11,6 +13,8 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
+import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @RestController
@@ -46,6 +50,40 @@ public class BaseChargeController {
         baseChargeService.excelBatchImport(fileServer);
 
         return result;
+    }
+
+    @RequestMapping("/getAll")
+    public JSONObject getAll(String pageNo) {
+        JSONObject jsonObject = new JSONObject();
+
+        List<HashMap> list = baseChargeService.getAll();
+        int curRecord = (Integer.parseInt(pageNo) - 1) * 10;
+        int totalPage = (list.size() - 1) / 10 + 1;
+        JSONArray jsonArray = new JSONArray();
+        for (int i=curRecord; i<curRecord+10; i++) {
+            if (i >= list.size()) {
+                break;
+            }
+
+            Map<String, String> map = new HashMap<>();
+            String area = (String) list.get(i).get("area");
+            map.put("area", area);
+            if (list.get(i).containsKey("charge")) {
+                String charge = list.get(i).get("charge").toString();
+                map.put("charge", charge);
+            } else {
+                map.put("charge", "");
+            }
+            jsonArray.add(map);
+        }
+
+        jsonObject.put("list", jsonArray);
+        jsonObject.put("totalPage", totalPage);
+        jsonObject.put("result", "SUCCESS");
+
+        logger.debug("baseCharge getAll: {}", list);
+
+        return jsonObject;
     }
 
     @Autowired

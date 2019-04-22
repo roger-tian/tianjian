@@ -30,6 +30,31 @@
                 </div>
             </div>
         </div>
+        <div class="row text-center">
+            <h1>查询</h1>
+        </div>
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2">
+                <div class="form-group">
+                    <label for="query" class="sr-only"></label>
+                    <button id="query" class="btn btn-default" @click="queryBaseCharge">查询</button>
+                </div>
+            </div>
+        </div>
+        <div>
+            <table border="1px" width="600px">
+                <tr>
+                    <td>姓名</td>
+                    <td>年龄</td>
+                    <td>性别</td>
+                </tr>
+                <tr v-for="person in people">
+                    <td>{{ person.name  }}</td>
+                    <td>{{ person.age  }}</td>
+                    <td>{{ person.sex  }}</td>
+                </tr>
+            </table>
+        </div>
     </div>
     <script type="text/javascript" src="/js/jquery.js"></script>
     <script type="text/javascript" src="/js/bootstrap.min.js"></script>
