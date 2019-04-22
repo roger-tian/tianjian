@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="description" content="" />
+<link href="css/bootstrap.min.css" rel="stylesheet">
+<title>后台页面</title>
+</head>
+<body style="background-color: #fff;">
+    <div class="container" id="app">
+        <div class="row text-center">
+            <h1>文件上传</h1>
+        </div>
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2">
+                <div class="form-group">
+                    <label for="upload_file">文件</label>
+                    <input type="file" class="form-control" id="upload_file" @change="fileChange" />
+                </div>
+                <div class="form-group">
+                    <label for="ota" class="sr-only"></label>
+                    <button id="ota" class="btn btn-default" @click="uploadFile">上传</button>
+                </div>
+                <div class="form-group">
+                    <label for="ota_log" class="sr-only"></label>
+                    <textarea class="form-control" rows="8" cols="" id="ota_log"
+                        v-model="upload.log"></textarea>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript" src="/js/jquery.js"></script>
+    <script type="text/javascript" src="/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="/js/vue.js"></script>
+    <script type="text/javascript" src="/js/test.js"></script>
+</body>
+</html>

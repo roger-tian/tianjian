@@ -4,7 +4,7 @@
     <resultMap id="BaseResultMap" type="com.leisu.tianjian.model.BaseChargeModel" >
         <id column="id" property="id" jdbcType="BIGINT" />
         <result column="area_id" property="areaId" jdbcType="BIGINT" />
-        <result column="charge" property="charge" jdbcType="VARCHAR" />
+        <result column="charge" property="charge" jdbcType="REAL" />
     </resultMap>
 
     <sql id="Base_Column_List" >
@@ -13,5 +13,13 @@
 
     <select id="getBaseChargeByArea" resultType="String" parameterType="map">
         select charge from base_charge left join area on base_charge.area_id = area.id where area.area = #{areaId}
+    </select>
+
+    <select id="insertByArea" parameterType="java.util.HashMap">
+      insert into base_charge(area_id, charge) values((select id from area where area.area=#{area}), #{charge})
+    </select>
+
+    <select id="insertByAreaId" parameterType="com.leisu.tianjian.model.BaseChargeModel">
+        insert into base_charge(area_id, charge) values(#{areaId}, #{charge})
     </select>
 </mapper>

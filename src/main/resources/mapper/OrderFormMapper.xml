@@ -9,7 +9,7 @@
         <result column="volume" property="volume" jdbcType="VARCHAR" />
         <result column="flag" property="flag" jdbcType="VARCHAR" />
         <result column="amount" property="amount" jdbcType="VARCHAR" />
-        <result column="ctime" property="ctime" jdbcType="VARCHAR" />
+        <result column="ctime" property="ctime" jdbcType="TIMESTAMP" />
     </resultMap>
 
     <sql id="Base_Column_List" >

@@ -24,3 +24,7 @@ spring:
 mybatis:
   mapper-locations: classpath:mapper/*.xml
   type-aliases-package: com.leisu.tianjian.model
+
+base-charge:
+#  upload-path: /var/wechat/upload/
+  upload-path: d:\upload\

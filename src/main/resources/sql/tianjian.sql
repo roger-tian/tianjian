@@ -61,7 +61,7 @@ DROP TABLE IF EXISTS `base_charge`;
 CREATE TABLE `base_charge` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `area_id` bigint(20) DEFAULT NULL,
-  `charge` varchar(20) DEFAULT NULL,
+  `charge` FLOAT(10,3) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8;
 
@@ -71,7 +71,7 @@ DROP TABLE IF EXISTS `charge_type`;
 CREATE TABLE `charge_type` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `type` varchar(20) DEFAULT NULL,
-  `charge` varchar(20) DEFAULT NULL,
+  `charge` FLOAT(10,3) DEFAULT NULL,
   `remark` varchar(20) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8;
@@ -90,7 +90,7 @@ CREATE TABLE `order_form` (
   `weight` varchar(20) DEFAULT NULL,
   `volume` varchar(20) DEFAULT NULL,
   `flag` varchar(20) DEFAULT '0',
-  `amount` varchar(20) DEFAULT NULL,
+  `amount` FLOAT(10,3) DEFAULT NULL,
   `ctime` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8;

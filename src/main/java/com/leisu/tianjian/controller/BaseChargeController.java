@@ -4,10 +4,13 @@ import com.leisu.tianjian.service.BaseChargeService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.File;
 import java.util.Map;
 
 @RestController
@@ -26,8 +29,29 @@ public class BaseChargeController {
         return baseChargeService.getBaseChargeByArea(area);
     }
 
+    @RequestMapping("/excelImport")
+    public String baseChargeExcelImport(MultipartFile file) throws Exception {
+        String result = "SUCCESS";
+
+        if (file == null) {
+            return "FAIL";
+        }
+
+        String fileName = file.getOriginalFilename();
+        String path = uploadPath + file.getOriginalFilename();
+        logger.debug("path: {}", path);
+        File fileServer = new File(path);
+        file.transferTo(fileServer);
+
+        baseChargeService.excelBatchImport(fileServer);
+
+        return result;
+    }
+
     @Autowired
     private BaseChargeService baseChargeService;
+    @Value("${base-charge.upload-path}")
+    private String uploadPath;
 
     private static final Logger logger = LoggerFactory.getLogger(BaseChargeController.class);
 }
