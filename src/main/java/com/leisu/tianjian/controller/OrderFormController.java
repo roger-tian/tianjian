@@ -1,5 +1,6 @@
 package com.leisu.tianjian.controller;
 
+import com.alibaba.fastjson.JSONObject;
 import com.leisu.tianjian.model.OrderFormModel;
 import com.leisu.tianjian.service.OrderFormService;
 import org.slf4j.Logger;
@@ -17,7 +18,7 @@ import java.util.Map;
 @RequestMapping("/order")
 public class OrderFormController {
     @RequestMapping("/generate")
-    public String generateOrder(@RequestBody Map req) {
+    public JSONObject generateOrder(@RequestBody Map req) {
         String userFrom = (String) req.get("userFrom");
         String userFromPhone = (String) req.get("userFromPhone");
         String userTo = (String) req.get("userTo");
@@ -28,6 +29,8 @@ public class OrderFormController {
         String weight = (String) req.get("weight");
         String volume = (String) req.get("volume");
         String amount = (String) req.get("amount");
+
+        JSONObject jsonObject = new JSONObject();
 
         OrderFormModel orderFormModel = new OrderFormModel();
         orderFormModel.setUserFrom(userFrom);
@@ -48,7 +51,9 @@ public class OrderFormController {
 
         orderFormService.insert(orderFormModel);
 
-        return "";
+        jsonObject.put("result", "SUCCESS");
+
+        return jsonObject;
     }
 
     @Autowired
