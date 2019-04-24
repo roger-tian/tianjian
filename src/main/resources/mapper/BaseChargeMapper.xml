@@ -12,15 +12,27 @@
     </sql>
 
     <select id="getAll" resultType="java.util.HashMap">
-        select a.area, c.charge from area a left join base_charge c on a.id = c.area_id;
+        select a.province, a.city, a.area, b.charge from area a left join base_charge b on a.id = b.area_id;
     </select>
 
-    <select id="getBaseChargeByArea" resultType="String" parameterType="map">
-        select charge from base_charge left join area on base_charge.area_id = area.id where area.area = #{areaId}
+    <select id="getByProvinceCityArea" resultType="String" parameterType="com.leisu.tianjian.model.BaseChargeModel">
+        select charge from base_charge b left join area a on b.area_id = a.id
+          where a.province = #{province} and a.city = #{city} and a.area = #{area}
+    </select>
+
+    <select id="getByProvinceCity" resultType="String" parameterType="com.leisu.tianjian.model.BaseChargeModel">
+        select charge from base_charge b left join area a on b.area_id = a.id
+        where a.province = #{province} and a.city = #{city}
+    </select>
+
+    <select id="getByProvince" resultType="String" parameterType="com.leisu.tianjian.model.BaseChargeModel">
+        select charge from base_charge b left join area a on b.area_id = a.id
+        where a.province = #{province}
     </select>
 
     <select id="insertByArea" parameterType="java.util.HashMap">
-      insert into base_charge(area_id, charge) values((select id from area where area.area=#{area}), #{charge})
+      insert into base_charge(area_id, charge) values(
+          (select id from area where area.province=#{province} and city=#{city} and area=#{area}), #{charge})
     </select>
 
     <select id="insertByAreaId" parameterType="com.leisu.tianjian.model.BaseChargeModel">

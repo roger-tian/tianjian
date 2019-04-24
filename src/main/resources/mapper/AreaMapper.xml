@@ -3,19 +3,24 @@
 <mapper namespace="com.leisu.tianjian.dao.AreaDao" >
     <resultMap id="BaseResultMap" type="com.leisu.tianjian.model.AreaModel" >
         <id column="id" property="id" jdbcType="BIGINT" />
+        <result column="province" property="province" jdbcType="VARCHAR" />
+        <result column="city" property="city" jdbcType="VARCHAR" />
         <result column="area" property="area" jdbcType="VARCHAR" />
-        <result column="superior" property="superior" jdbcType="VARCHAR" />
     </resultMap>
 
     <sql id="Base_Column_List" >
-        id, area, superior
+        id, province, city, area
     </sql>
 
     <select id="getProvince" resultType="String">
-        select area from area where superior = ""
+        select distinct province from area where 1 = 1
     </select>
 
     <select id="getCity" resultType="String" parameterType="String">
-        select area from area where superior = #{superior}
+        select distinct city from area where province = #{province}
+    </select>
+
+    <select id="getArea" resultType="String" parameterType="com.leisu.tianjian.model.AreaModel">
+        select area from area where province = #{province} and city = #{city}
     </select>
 </mapper>

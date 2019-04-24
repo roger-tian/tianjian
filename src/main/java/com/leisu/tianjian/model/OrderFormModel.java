@@ -5,92 +5,92 @@ public class OrderFormModel {
         return id;
     }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
-
     public String getUserFrom() {
         return userFrom;
-    }
-
-    public void setUserFrom(String userFrom) {
-        this.userFrom = userFrom;
     }
 
     public String getUserFromPhone() {
         return userFromPhone;
     }
 
-    public void setUserFromPhone(String userFromPhone) {
-        this.userFromPhone = userFromPhone;
-    }
-
     public String getUserTo() {
         return userTo;
-    }
-
-    public void setUserTo(String userTo) {
-        this.userTo = userTo;
     }
 
     public String getUserToPhone() {
         return userToPhone;
     }
 
-    public void setUserToPhone(String userToPhone) {
-        this.userToPhone = userToPhone;
-    }
-
     public String getOrderFrom() {
         return orderFrom;
-    }
-
-    public void setOrderFrom(String orderFrom) {
-        this.orderFrom = orderFrom;
     }
 
     public String getOrderTo() {
         return orderTo;
     }
 
-    public void setOrderTo(String orderTo) {
-        this.orderTo = orderTo;
-    }
-
     public String getWeight() {
         return weight;
-    }
-
-    public void setWeight(String weight) {
-        this.weight = weight;
     }
 
     public String getVolume() {
         return volume;
     }
 
-    public void setVolume(String volume) {
-        this.volume = volume;
-    }
-
     public String getFlag() {
         return flag;
-    }
-
-    public void setFlag(String flag) {
-        this.flag = flag;
     }
 
     public String getAmount() {
         return amount;
     }
 
-    public void setAmount(String amount) {
-        this.amount = amount;
-    }
-
     public String getCtime() {
         return ctime;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public void setUserFrom(String userFrom) {
+        this.userFrom = userFrom;
+    }
+
+    public void setUserFromPhone(String userFromPhone) {
+        this.userFromPhone = userFromPhone;
+    }
+
+    public void setUserTo(String userTo) {
+        this.userTo = userTo;
+    }
+
+    public void setUserToPhone(String userToPhone) {
+        this.userToPhone = userToPhone;
+    }
+
+    public void setOrderFrom(String orderFrom) {
+        this.orderFrom = orderFrom;
+    }
+
+    public void setOrderTo(String orderTo) {
+        this.orderTo = orderTo;
+    }
+
+    public void setWeight(String weight) {
+        this.weight = weight;
+    }
+
+    public void setVolume(String volume) {
+        this.volume = volume;
+    }
+
+    public void setFlag(String flag) {
+        this.flag = flag;
+    }
+
+    public void setAmount(String amount) {
+        this.amount = amount;
     }
 
     public void setCtime(String ctime) {

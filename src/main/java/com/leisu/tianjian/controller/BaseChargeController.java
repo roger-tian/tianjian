@@ -2,11 +2,14 @@ package com.leisu.tianjian.controller;
 
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
+import com.leisu.tianjian.model.AreaModel;
+import com.leisu.tianjian.model.BaseChargeModel;
 import com.leisu.tianjian.service.BaseChargeService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -20,17 +23,26 @@ import java.util.Map;
 @RestController
 @RequestMapping("/baseCharge")
 public class BaseChargeController {
-    @RequestMapping("/getByArea")
-    public String getBaseChargeByArea(@RequestBody Map req) {
+//    @CrossOrigin(origins = "http://localhost")
+    @RequestMapping("/getByProvinceCityArea")
+    public JSONObject getByProvinceCityArea(@RequestBody Map req) {
         String province = (String) req.get("province");
         String city = (String) req.get("city");
-        String area;
-        if (city.equals("空")) {
-            area = city;
-        } else {
-            area = province;
-        }
-        return baseChargeService.getBaseChargeByArea(area);
+        String area = (String) req.get("area");
+        String result;
+
+        JSONObject jsonObject = new JSONObject();
+
+        AreaModel areaModel = new AreaModel();
+        areaModel.setProvince(province);
+        areaModel.setCity(city);
+        areaModel.setArea(area);
+        result = baseChargeService.getByProvinceCityArea(areaModel);
+        logger.debug("getBaseChargeByArea area: {}", result);
+
+        jsonObject.put("charge", result);
+
+        return jsonObject;
     }
 
     @RequestMapping("/excelImport")
@@ -53,7 +65,10 @@ public class BaseChargeController {
     }
 
     @RequestMapping("/getAll")
-    public JSONObject getAll(String pageNo) {
+//    @CrossOrigin(origins = "http://localhost:9528")
+    public JSONObject getAll(@RequestBody Map req) {
+        String pageNo = req.get("pageNo").toString();
+
         JSONObject jsonObject = new JSONObject();
 
         List<HashMap> list = baseChargeService.getAll();

@@ -50,8 +50,9 @@ DROP TABLE IF EXISTS `area`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `area` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `province` varchar(20) DEFAULT NULL,
+  `city` varchar(20) DEFAULT NULL,
   `area` varchar(20) DEFAULT NULL,
-  `superior` varchar(20) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8;
 

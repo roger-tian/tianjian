@@ -2,6 +2,7 @@ package com.leisu.tianjian.service.Impl;
 
 import com.alibaba.fastjson.JSONObject;
 import com.leisu.tianjian.dao.BaseChargeDao;
+import com.leisu.tianjian.model.AreaModel;
 import com.leisu.tianjian.model.BaseChargeModel;
 import com.leisu.tianjian.service.BaseChargeService;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
@@ -24,13 +25,13 @@ import java.util.List;
 @Service
 public class BaseChargeServiceImpl implements BaseChargeService {
     @Override
-    public String getBaseChargeByArea(String area) {
-        return baseChargeDao.getBaseChargeByArea(area);
+    public List<HashMap> getAll() {
+        return baseChargeDao.getAll();
     }
 
     @Override
-    public List<HashMap> getAll() {
-        return baseChargeDao.getAll();
+    public String getByProvinceCityArea(AreaModel areaModel) {
+        return baseChargeDao.getByProvinceCityArea(areaModel);
     }
 
     @Override

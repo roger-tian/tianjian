@@ -1,6 +1,7 @@
 package com.leisu.tianjian.service.Impl;
 
 import com.leisu.tianjian.dao.AreaDao;
+import com.leisu.tianjian.model.AreaModel;
 import com.leisu.tianjian.service.AreaService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -21,6 +22,11 @@ public class AreaServiceImpl implements AreaService {
     @Override
     public List<String> getCity(String superior) {
         return areaDao.getCity(superior);
+    }
+
+    @Override
+    public List<String> getArea(AreaModel areaModel) {
+        return areaDao.getArea(areaModel);
     }
 
     @Autowired

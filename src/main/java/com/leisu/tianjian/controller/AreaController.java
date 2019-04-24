@@ -1,5 +1,6 @@
 package com.leisu.tianjian.controller;
 
+import com.leisu.tianjian.model.AreaModel;
 import com.leisu.tianjian.service.AreaService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -21,10 +22,21 @@ public class AreaController {
 
     @RequestMapping("/getCity")
     public List<String> getCity(@RequestBody Map req) {
-        String superior = (String) req.get("superior");
-        logger.debug("getCity req: {}", req);
+        String province = (String) req.get("province");
 
-        return areaService.getCity(superior);
+        return areaService.getCity(province);
+    }
+
+    @RequestMapping("getArea")
+    public List<String> getArea(@RequestBody Map req) {
+        String province = (String) req.get("province");
+        String city = (String) req.get("city");
+
+        AreaModel areaModel = new AreaModel();
+        areaModel.setProvince(province);
+        areaModel.setCity(city);
+
+        return areaService.getArea(areaModel);
     }
 
     @Autowired
