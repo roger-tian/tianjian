@@ -23,4 +23,12 @@
     <select id="getArea" resultType="String" parameterType="com.leisu.tianjian.model.AreaModel">
         select area from area where province = #{province} and city = #{city}
     </select>
+
+    <select id="getByProvinceCityArea" resultMap="BaseResultMap" parameterType="com.leisu.tianjian.model.AreaModel">
+        select * from area where province = #{province} and city = #{city} and area = #{area}
+    </select>
+
+    <select id="insert" parameterType="com.leisu.tianjian.model.AreaModel">
+        insert into area(province, city, area) values(#{province}, #{city}, #{area})
+    </select>
 </mapper>

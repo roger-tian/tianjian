@@ -10,4 +10,8 @@ public interface AreaDao {
     List<String> getCity(String province);
 
     List<String> getArea(AreaModel areaModel);
+
+    AreaModel getByProvinceCityArea(AreaModel areaModel);
+
+    void insert(AreaModel areaModel);
 }

@@ -29,6 +29,16 @@ public class AreaServiceImpl implements AreaService {
         return areaDao.getArea(areaModel);
     }
 
+    @Override
+    public AreaModel getByProvinceCityArea(AreaModel areaModel) {
+        return areaDao.getByProvinceCityArea(areaModel);
+    }
+
+    @Override
+    public void insert(AreaModel areaModel) {
+        areaDao.insert(areaModel);
+    }
+
     @Autowired
     private AreaDao areaDao;
     @Resource(name="tjRedisTemplate")

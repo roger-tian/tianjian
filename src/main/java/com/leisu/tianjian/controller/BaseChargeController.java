@@ -50,7 +50,6 @@ public class BaseChargeController {
             return "FAIL";
         }
 
-        String fileName = file.getOriginalFilename();
         String path = uploadPath + file.getOriginalFilename();
         logger.debug("path: {}", path);
         File fileServer = new File(path);

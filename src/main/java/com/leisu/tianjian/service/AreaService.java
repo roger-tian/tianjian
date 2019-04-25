@@ -10,4 +10,8 @@ public interface AreaService {
     List<String> getCity(String superior);
 
     List<String> getArea(AreaModel areaModel);
+
+    AreaModel getByProvinceCityArea(AreaModel areaModel);
+
+    void insert(AreaModel areaModel);
 }

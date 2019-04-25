@@ -1,5 +1,6 @@
 package com.leisu.tianjian.service;
 
+import com.alibaba.fastjson.JSONObject;
 import com.leisu.tianjian.model.AreaModel;
 import com.leisu.tianjian.model.BaseChargeModel;
 
@@ -16,5 +17,5 @@ public interface BaseChargeService {
 
     void insertByAreaId(BaseChargeModel baseChargeModel);
 
-    String excelBatchImport(File file) throws Exception;
+    JSONObject excelBatchImport(File file) throws Exception;
 }

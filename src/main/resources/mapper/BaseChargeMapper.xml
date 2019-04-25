@@ -15,17 +15,17 @@
         select a.province, a.city, a.area, b.charge from area a left join base_charge b on a.id = b.area_id;
     </select>
 
-    <select id="getByProvinceCityArea" resultType="String" parameterType="com.leisu.tianjian.model.BaseChargeModel">
+    <select id="getByProvinceCityArea" resultType="String" parameterType="com.leisu.tianjian.model.AreaModel">
         select charge from base_charge b left join area a on b.area_id = a.id
           where a.province = #{province} and a.city = #{city} and a.area = #{area}
     </select>
 
-    <select id="getByProvinceCity" resultType="String" parameterType="com.leisu.tianjian.model.BaseChargeModel">
+    <select id="getByProvinceCity" resultType="String" parameterType="com.leisu.tianjian.model.AreaModel">
         select charge from base_charge b left join area a on b.area_id = a.id
         where a.province = #{province} and a.city = #{city}
     </select>
 
-    <select id="getByProvince" resultType="String" parameterType="com.leisu.tianjian.model.BaseChargeModel">
+    <select id="getByProvince" resultType="String" parameterType="com.leisu.tianjian.model.AreaModel">
         select charge from base_charge b left join area a on b.area_id = a.id
         where a.province = #{province}
     </select>
