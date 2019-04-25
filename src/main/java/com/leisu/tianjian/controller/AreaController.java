@@ -1,5 +1,6 @@
 package com.leisu.tianjian.controller;
 
+import com.alibaba.fastjson.JSONObject;
 import com.leisu.tianjian.model.AreaModel;
 import com.leisu.tianjian.service.AreaService;
 import org.slf4j.Logger;
@@ -10,7 +11,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
-import java.util.Map;
 
 @RestController
 @RequestMapping("/area")
@@ -21,14 +21,14 @@ public class AreaController {
     }
 
     @RequestMapping("/getCity")
-    public List<String> getCity(@RequestBody Map req) {
+    public List<String> getCity(@RequestBody JSONObject req) {
         String province = (String) req.get("province");
 
         return areaService.getCity(province);
     }
 
     @RequestMapping("getArea")
-    public List<String> getArea(@RequestBody Map req) {
+    public List<String> getArea(@RequestBody JSONObject req) {
         String province = (String) req.get("province");
         String city = (String) req.get("city");
 

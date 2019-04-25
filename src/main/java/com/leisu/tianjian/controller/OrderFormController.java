@@ -12,13 +12,12 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.Map;
 
 @RestController
 @RequestMapping("/order")
 public class OrderFormController {
     @RequestMapping("/generate")
-    public JSONObject generateOrder(@RequestBody Map req) {
+    public JSONObject generateOrder(@RequestBody JSONObject req) {
         String userFrom = (String) req.get("userFrom");
         String userFromPhone = (String) req.get("userFromPhone");
         String userTo = (String) req.get("userTo");

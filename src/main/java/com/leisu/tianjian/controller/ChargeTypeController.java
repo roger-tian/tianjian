@@ -9,13 +9,11 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.Map;
-
 @RestController
 @RequestMapping("/chargeType")
 public class ChargeTypeController {
     @RequestMapping("/getByType")
-    public JSONObject getByChargeType(@RequestBody Map req) {
+    public JSONObject getByChargeType(@RequestBody JSONObject req) {
         String type = (String) req.get("type");
 
         return (JSONObject) JSONObject.toJSON(chargeTypeService.getByChargeType(type));

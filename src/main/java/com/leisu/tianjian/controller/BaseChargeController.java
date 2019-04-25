@@ -3,13 +3,11 @@ package com.leisu.tianjian.controller;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.leisu.tianjian.model.AreaModel;
-import com.leisu.tianjian.model.BaseChargeModel;
 import com.leisu.tianjian.service.BaseChargeService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -23,9 +21,8 @@ import java.util.Map;
 @RestController
 @RequestMapping("/baseCharge")
 public class BaseChargeController {
-//    @CrossOrigin(origins = "http://localhost")
     @RequestMapping("/getByProvinceCityArea")
-    public JSONObject getByProvinceCityArea(@RequestBody Map req) {
+    public JSONObject getByProvinceCityArea(@RequestBody JSONObject req) {
         String province = (String) req.get("province");
         String city = (String) req.get("city");
         String area = (String) req.get("area");
@@ -65,8 +62,7 @@ public class BaseChargeController {
     }
 
     @RequestMapping("/getAll")
-//    @CrossOrigin(origins = "http://localhost:9528")
-    public JSONObject getAll(@RequestBody Map req) {
+    public JSONObject getAll(@RequestBody JSONObject req) {
         String pageNo = req.get("pageNo").toString();
 
         JSONObject jsonObject = new JSONObject();
@@ -80,8 +76,13 @@ public class BaseChargeController {
                 break;
             }
 
-            Map<String, String> map = new HashMap<>();
+            String province = (String) list.get(i).get("province");
+            String city = (String) list.get(i).get("city");
             String area = (String) list.get(i).get("area");
+
+            Map<String, String> map = new HashMap<>();
+            map.put("province", province);
+            map.put("city", city);
             map.put("area", area);
             if (list.get(i).containsKey("charge")) {
                 String charge = list.get(i).get("charge").toString();
