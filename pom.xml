@@ -10,8 +10,9 @@
     </parent>
     <groupId>com.leisu</groupId>
     <artifactId>tianjian</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>0.0.1</version>
     <name>tianjian</name>
+    <packaging>jar</packaging>
     <description>tianjian system for leisu logistics</description>
 
     <properties>
@@ -90,7 +91,10 @@
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
+                <artifactId>spring-boot-maven-plugin </artifactId>
+                <configuration>
+                    <mainClass>com.leisu.tianjian.TianjianApplication</mainClass>
+                </configuration>
             </plugin>
         </plugins>
     </build>
